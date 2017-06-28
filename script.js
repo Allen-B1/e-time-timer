@@ -1,3 +1,3 @@
 document.getElementById("start").onclick = function() {
-  alert("Start!");
+  alert("Start! again");
 }
