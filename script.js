@@ -12,6 +12,6 @@ function instantTime(n) {
 
 
 document.getElementById("instant-time-btn").onclick = function() {
-  var n = Number(document.getElementById("instant-time")) | 0;
+  var n = Number(document.getElementById("instant-time").value) | 0;
   instantTime(n);
 }
