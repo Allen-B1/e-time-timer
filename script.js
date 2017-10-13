@@ -28,6 +28,7 @@ ETimer.prototype.startTimer = function(secs) {
 function EEndTimer(name, endTime) {
     this.name = name;
     this.endTime = new Date(endTime).getTime();
+    this.endTime.setDate(new Date().getDate());
 }
 EEndTimer.prototype.timeLeft = function() {
     var secs =  (this.endTime - Date.now()) / 1000;
