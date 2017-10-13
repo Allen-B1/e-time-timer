@@ -37,11 +37,11 @@ EEndTimer.prototype.timeLeft = function() {
     this.update();
     return {min: min, sec: seconds};
 }
-EEndTimer.prototype.setEndTime(endTime) {
+EEndTimer.prototype.setEndTime = function(endTime) {
     this.endTime = new Date(endTime).getTime();
     this.update();
 }
-EEndTimer.prototype.update() {
+EEndTimer.prototype.update = function() {
     this.endTime.setDate(new Date().getDate());
 }
 
