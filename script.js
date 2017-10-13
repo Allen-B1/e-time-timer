@@ -27,18 +27,18 @@ ETimer.prototype.startTimer = function(secs) {
 
 function EEndTimer(name, endTime) {
     this.name = name;
-    this.endTime = new Date(endTime).getTime();
+    this.endTime = new Date(endTime);
     this.update();
 }
 EEndTimer.prototype.timeLeft = function() {
-    var secs =  (this.endTime - Date.now()) / 1000;
+    var secs =  (this.endTime.getTime() - Date.now()) / 1000;
     var min = Math.floor(secs / 60);
     var seconds = secs - min * 60;
     this.update();
     return {min: min, sec: seconds};
 }
 EEndTimer.prototype.setEndTime = function(endTime) {
-    this.endTime = new Date(endTime).getTime();
+    this.endTime = new Date(endTime);
     this.update();
 }
 EEndTimer.prototype.update = function() {
