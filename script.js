@@ -28,16 +28,21 @@ ETimer.prototype.startTimer = function(secs) {
 function EEndTimer(name, endTime) {
     this.name = name;
     this.endTime = new Date(endTime).getTime();
-    this.endTime.setDate(new Date().getDate());
+    this.update();
 }
 EEndTimer.prototype.timeLeft = function() {
     var secs =  (this.endTime - Date.now()) / 1000;
     var min = Math.floor(secs / 60);
     var seconds = secs - min * 60;
+    this.update();
     return {min: min, sec: seconds};
 }
 EEndTimer.prototype.setEndTime(endTime) {
     this.endTime = new Date(endTime).getTime();
+    this.update();
+}
+EEndTimer.prototype.update() {
+    this.endTime.setDate(new Date().getDate());
 }
 
 document.getElementById("start").onclick = function() {
@@ -57,3 +62,9 @@ document.getElementById("instant-time-btn").onclick = function() {
     var n = Number(document.getElementById("instant-time").value) | 0;
     instantTime(n);
 }
+
+const bedtime = new EEndTimer("BedTime", "8:30 PM");
+setTimeout(function() {
+    var timeLeft = bedtime.timeLeft();
+    document.write(timeLeft.min + ":" + timeLeft.sec);
+}, 1000);
